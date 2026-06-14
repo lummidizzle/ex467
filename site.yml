@@ -4,5 +4,10 @@
   gather_facts: false
 
   tasks:
-    - name: Ping hosts
-      ansible.builtin.ping:
+    - name: Show hostname
+      ansible.builtin.command: hostname
+      register: host_out
+
+    - name: Display hostname
+      ansible.builtin.debug:
+        var: host_out.stdout
